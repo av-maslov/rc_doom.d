@@ -44,7 +44,8 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 ;;(setq doom-theme 'doom-one)
-(setq doom-theme 'doom-1337)
+;; (setq doom-theme 'doom-1337)
+(setq doom-theme 'doom-gruvbox)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -90,6 +91,26 @@
 (map! :leader
       :desc "Save buffer"
       "l" #'save-buffer)
+
+(map! :leader
+      (:prefix ("r" . "roam")
+       :desc "Find file"
+      "f" #'org-roam-find-file))
+
+(map! :leader
+      (:prefix ("r" . "roam")
+       :desc "Insert"
+      "i" #'org-roam-insert))
+
+(map! :leader
+      (:prefix ("r" . "roam")
+       :desc "Graph"
+      "g" #'org-roam-graph))
+
+(map! :leader
+      (:prefix ("r" . "roam")
+       :desc "Capture"
+      "c" #'org-roam-capture))
 
 (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
 (define-key evil-insert-state-map (kbd "C-k") 'evil-normal-state)
