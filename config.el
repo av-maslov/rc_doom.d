@@ -5,7 +5,7 @@
 ;;
 ;; (setq doom-font (font-spec :family "Fira Mono" :size 16))
 ;;(setq doom-font (font-spec :family "Fira Mono" :size 16))
-(menu-bar-mode t)
+;;(menu-bar-mode t)
 
 (setq org-roam-v2-ack t)
 (setq org-roam-directory "/home/al/org-roam/silo/hm/")
@@ -32,7 +32,7 @@
 ;;(setq doom-font (font-spec :family "Fira Code" :size 16 :weight 'semi-light)
 ;;      doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
 
-(set-frame-font "Fira Code Retina 14")
+(set-frame-font "Fira Code Retina 12")
 
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
@@ -45,7 +45,11 @@
 ;; `load-theme' function. This is the default:
 ;;(setq doom-theme 'doom-one)
 ;; (setq doom-theme 'doom-1337)
-(setq doom-theme 'doom-gruvbox)
+;;(setq doom-theme 'doom-gruvbox)
+;; (setq doom-theme 'doom-dracula)
+;; (setq doom-theme 'doom-flatwhite)
+(setq doom-theme 'doom-gruvbox-light)
+
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -112,7 +116,12 @@
        :desc "Capture"
       "c" #'org-roam-capture))
 
+(map! :leader
+      (:prefix ("r" . "roam")
+       :desc "Daily"
+      "d" #'org-roam-dailies-find-today))
+
 (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
 (define-key evil-insert-state-map (kbd "C-k") 'evil-normal-state)
-(define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
+;;(definekey evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
