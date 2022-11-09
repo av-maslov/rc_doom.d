@@ -8,8 +8,10 @@
 ;;(menu-bar-mode t)
 
 (setq org-roam-v2-ack t)
-(setq org-roam-directory "/home/al/org-roam/silo/hm/")
+(setq org-roam-directory "/home/al/org-roam/")
 (setq org-roam-complete-everywhere t)
+
+(global-visual-line-mode 1)
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
@@ -29,10 +31,13 @@
 ;; accept. For example:
 ;;
 
-;;(setq doom-font (font-spec :family "Fira Code" :size 16 :weight 'semi-light)
-;;      doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
+(setq doom-font (font-spec :family "Fira Code" :size 16 :weight 'semi-light)
+      doom-variable-pitch-font (font-spec :family "Fira Sans" :size 16))
 
-(set-frame-font "Fira Code Retina 12")
+;; (set-frame-font "Fira Code Retina 12")
+;; (set-frame-font "Fira Code Retina 14")
+(set-frame-font "Fira Code Retina 16")
+
 
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
@@ -48,7 +53,13 @@
 ;;(setq doom-theme 'doom-gruvbox)
 ;; (setq doom-theme 'doom-dracula)
 ;; (setq doom-theme 'doom-flatwhite)
-(setq doom-theme 'doom-gruvbox-light)
+;; (setq doom-theme 'doom-gruvbox-light)
+;; (setq doom-theme 'doom-solarized-dark)
+;; (setq doom-theme 'doom-dracula)
+;; (setq doom-theme 'doom-dark+)
+;; (setq doom-theme 'doom-1337)
+;; (setq doom-theme 'doom-ayu-light)
+(setq doom-theme 'doom-ayu-dark)
 
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
@@ -125,3 +136,12 @@
 (define-key evil-insert-state-map (kbd "C-k") 'evil-normal-state)
 ;;(definekey evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+
+(use-package! python-black
+  :demand t
+  :after python)
+(add-hook! 'python-mode-hook #'python-black-on-save-mode)
+;; Feel free to throw your own personal keybindings here
+(map! :leader :desc "Blacken Buffer" "m b b" #'python-black-buffer)
+(map! :leader :desc "Blacken Region" "m b r" #'python-black-region)
+(map! :leader :desc "Blacken Statement" "m b s" #'python-black-statement)
